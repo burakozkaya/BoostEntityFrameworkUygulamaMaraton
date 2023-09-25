@@ -13,7 +13,7 @@ public class BaseManager<T> : IManager<T> where T : class,IEntity
     {
         _baseRepo = baseRepo;
     }
-    public void AddManager(T entity)
+    public virtual void AddManager(T entity)
     {
         _baseRepo.Add(entity);
     }

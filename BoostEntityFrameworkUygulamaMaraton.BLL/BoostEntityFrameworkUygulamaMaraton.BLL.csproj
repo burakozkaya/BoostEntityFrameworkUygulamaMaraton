@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <Folder Include="Abstract\" />
+    <Folder Include="Validation&amp;Rules\" />
+    <Folder Include="ViewModel\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,6 @@
-﻿using BoostEntityFrameworkUygulamaMaraton.DAL.Context;
+﻿using System.Collections;
+using BoostEntityFrameworkUygulamaMaraton.DAL.Context;
+using BoostEntityFrameworkUygulamaMaraton.ENTITIES.Common;
 using BoostEntityFrameworkUygulamaMaraton.ENTITIES.Concrete;
 
 namespace BoostEntityFrameworkUygulamaMaraton.DAL.Concrete;
@@ -10,33 +12,50 @@ public class AlbümRepo : BaseRepo<Albüm>
         
     }
 
-    public List<Albüm> SatisDurmusAlbümlerListele()
+    public List<Albüm> SatisDurmusAlbümler()
     {
-        _dbSet.Select(a => new {
-                a.AlbumAdi
-                a.AlbumSanatciGrup
-            }).ToList();
-        }
-    //var cozum1 = DbSet.Select(a => new {
-    //    a.AlbumAdi
-    //    a.AlbumSanatciGrup
-    //}).ToList();
+        return _dbSet
+            .Where(x => x.AlbümSatisDevamliligi == SatisDurumu.Iptal).
+            Select(a => new Albüm
+        {
+            AlbümAdı = a.AlbümAdı,
+            AlbümSanatciGrup = a.AlbümSanatciGrup
+        })
+            .ToList();
+    }
 
+    public List<Albüm> SatisaDevamEdenAlbümler()
+    {
+        return _dbSet
+            .Where(x => x.AlbümSatisDevamliligi == SatisDurumu.Satista)
+            .Select(a => new Albüm
+            {
+                AlbümAdı = a.AlbümAdı,
+                AlbümSanatciGrup = a.AlbümSanatciGrup
+            })
+            .ToList();
+    }
 
-        //var cozum2 = DbSet.Where(a => a.SatisDurumu = Enum.Satista).Select(a => new {
-        //    a.AlbumAdi
-        //    a.AlbumSanatciGrup
-        //});
+    public List<Albüm> SonEklenenAlbümler()
+    {
+        return _dbSet.OrderByDescending(x=>x.Id).Take(10).Select(a => new Albüm
+        {
+            AlbümAdı = a.AlbümAdı,
+            AlbümSanatciGrup = a.AlbümSanatciGrup
+        }).ToList();
+    }
 
-        //var cozum3_1 = DbSet.Select(a => new {
-        //    a.AlbumAdi
-        //    a.AlbumSanatciGrup
-        //}).ToList();
-
-        //Var cozum3_2 = Enumerable.Reverse(cozum3_1).Take(10).Reverse().ToList();
-
-        //var cozum4 = DbSet.Where(a => a.Indirim != null).OrderByDescending(a => a.IndirimOrani).Select(a => new {
-        //    a.AlbumAdi
-        //    a.AlbumSanatciGrup
-        //}).ToList();
+    public List<Albüm> IndirimdekiAlbümler()
+    {
+        return _dbSet
+            .Where(x => x.AlbümIndirimOrani != 0)
+            .OrderByDescending(x => x.AlbümIndirimOrani)
+            .Select(a =>
+            new Albüm
+            {
+                AlbümAdı = a.AlbümAdı,
+                AlbümSanatciGrup = a.AlbümSanatciGrup
+            })
+            .ToList();
+    }
 }

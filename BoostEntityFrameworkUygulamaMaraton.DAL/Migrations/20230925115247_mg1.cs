@@ -21,7 +21,7 @@ namespace BoostEntityFrameworkUygulamaMaraton.DAL.Migrations
                     AlbümSanatciGrup = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AlbümCikisTarihi = table.Column<DateTime>(type: "datetime2", nullable: false),
                     AlbümFiyati = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    YüzdelikIndirimOrani = table.Column<int>(type: "int", nullable: false),
+                    AlbümIndirimOrani = table.Column<int>(type: "int", nullable: false),
                     AlbümSatisDevamliligi = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

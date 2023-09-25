@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BoostEntityFrameworkUygulamaMaraton.DAL.Migrations
 {
     [DbContext(typeof(AlbümDbContext))]
-    [Migration("20230925112219_mg1")]
+    [Migration("20230925115247_mg1")]
     partial class mg1
     {
         /// <inheritdoc />
@@ -43,14 +43,14 @@ namespace BoostEntityFrameworkUygulamaMaraton.DAL.Migrations
                     b.Property<decimal>("AlbümFiyati")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int>("AlbümIndirimOrani")
+                        .HasColumnType("int");
+
                     b.Property<string>("AlbümSanatciGrup")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("AlbümSatisDevamliligi")
-                        .HasColumnType("int");
-
-                    b.Property<int>("YüzdelikIndirimOrani")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

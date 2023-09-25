@@ -10,7 +10,7 @@ public class Albüm : IEntity
     public string AlbümSanatciGrup { get; set; }
     public DateTime AlbümCikisTarihi { get; set; }
     public decimal AlbümFiyati { get; set; }
-    public int YüzdelikIndirimOrani { get; set; }
-    public AlbümDevam AlbümSatisDevamliligi { get; set; }
+    public int AlbümIndirimOrani { get; set; }
+    public SatisDurumu AlbümSatisDevamliligi { get; set; }
 
 }

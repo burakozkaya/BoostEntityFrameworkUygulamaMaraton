@@ -1,7 +1,7 @@
 ﻿namespace BoostEntityFrameworkUygulamaMaraton.ENTITIES.Common;
 
-public enum AlbümDevam
+public enum SatisDurumu
 {
-    albümDevam = 1,
-    AlbümIptal = 2
+    Satista = 1,
+    Iptal = 2
 }

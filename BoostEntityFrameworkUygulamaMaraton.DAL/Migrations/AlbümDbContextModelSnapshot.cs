@@ -40,14 +40,14 @@ namespace BoostEntityFrameworkUygulamaMaraton.DAL.Migrations
                     b.Property<decimal>("AlbümFiyati")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int>("AlbümIndirimOrani")
+                        .HasColumnType("int");
+
                     b.Property<string>("AlbümSanatciGrup")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("AlbümSatisDevamliligi")
-                        .HasColumnType("int");
-
-                    b.Property<int>("YüzdelikIndirimOrani")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

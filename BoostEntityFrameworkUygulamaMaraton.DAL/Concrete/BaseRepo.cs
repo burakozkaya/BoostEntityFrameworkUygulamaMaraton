@@ -16,7 +16,7 @@ public abstract class BaseRepo<T> : IRepo<T> where T : class,IEntity
         _dbContext = context;
         _dbSet = _dbContext.Set<T>();
     }
-    public void Add(T entity)
+    public virtual void Add(T entity)
     {
         _dbSet.Add(entity);
         Save();
